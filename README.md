@@ -1,2 +1,2 @@
-# CivitasSimul
+# NeighborLY
 Project 3 
