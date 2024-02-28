@@ -1,0 +1,27 @@
+{
+  "name": "neighborly",
+  "version": "1.0.0",
+  "description": "community board",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3123MtOlympus/NeighborLY.git"
+  },
+  "author": "Sofia V., Chris C., Margaux S.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3123MtOlympus/NeighborLY/issues"
+  },
+  "homepage": "https://github.com/3123MtOlympus/NeighborLY#readme",
+
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
