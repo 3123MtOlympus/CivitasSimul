@@ -22,7 +22,7 @@ const userSchema = new Schema({
   },
   unitNumber: {
     type: String,
-    required: true,
+    required: false,
     unique: true,
     trim: true,
   },

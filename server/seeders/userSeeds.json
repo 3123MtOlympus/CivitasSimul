@@ -1,0 +1,30 @@
+[
+  {
+    "username": "Brian Kernighan",
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01",
+    "unitNumber": "123",
+    "phoneNumber": "123-456-7890"
+  },
+  {
+    "username": "Max Kanat-Alexander",
+    "email": "mkanatalexander@techfriends.dev",
+    "password": "password02",
+    "unitNumber": "103",
+    "phoneNumber": "173-456-7890"
+  },
+  {
+    "username": "Why The Lucky Stiff",
+    "email": "wtls@techfriends.dev",
+    "password": "password03",
+    "unitNumber": "523",
+    "phoneNumber": "123-656-7890"
+  },
+  {
+    "username": "Kent Beck",
+    "email": "kbeck@techfriends.dev",
+    "password": "password04",
+    "unitNumber": "183",
+    "phoneNumber": "323-456-7890"
+  }
+]
