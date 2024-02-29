@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-const ThoughtList = ({
-  thoughts,
+const ToolList = ({
+  tools,
   title,
   showTitle = true,
   showUsername = true,
@@ -13,34 +13,34 @@ const ThoughtList = ({
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
-      {thoughts &&
-        thoughts.map((thought) => (
-          <div key={thought._id} className="card mb-3">
+      {tools &&
+        tools.map((tool) => (
+          <div key={tool._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${thought.thoughtAuthor}`}
+                  to={`/profiles/${tool.owner}`}
                 >
-                  {thought.thoughtAuthor} <br />
+                  {tool.owner} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {thought.createdAt}
+                    had this thought on {tool.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {thought.createdAt}
+                    You had this thought on {tool.createdAt}
                   </span>
                 </>
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{thought.thoughtText}</p>
+              <p>{tool.toolText}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
+              to={`/tools/${tool._id}`}
             >
               Join the discussion on this thought.
             </Link>
@@ -50,4 +50,4 @@ const ThoughtList = ({
   );
 };
 
-export default ThoughtList;
+export default ToolList;
