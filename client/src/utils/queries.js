@@ -15,9 +15,9 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_TOOLS = gql`
+  query getTools {
+    tools {
       _id
       thoughtText
       thoughtAuthor
@@ -26,12 +26,12 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_TOOL = gql`
+  query getSingleTool($toolId: ID!) {
+    thought(toolId: $toolId) {
       _id
-      thoughtText
-      thoughtAuthor
+      toolText
+      toolAuthor
       createdAt
       comments {
         _id
@@ -49,10 +49,10 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      tools {
         _id
-        thoughtText
-        thoughtAuthor
+        toolText
+        toolAuthor
         createdAt
       }
     }
