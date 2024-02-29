@@ -3,21 +3,21 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    unitNumber: int
+    unitNumber: String
     password: String
     phoneNumber: String
-    tool: [Tool]!
+    notifiedAt: String
+    tools: [Tool]!
 
   }
 
   type Tool {
     _id: ID
-    toolText: String
-    toolAuthor: String
-    description:
-    createdAt: String
-    isAvailable: boolean 
-    imgUrl: String!
+    name: String
+    owner: String
+    description: String
+    isAvailable: Boolean 
+    imgUrl: String
     comments: [Comment]!
   }
 
@@ -25,8 +25,7 @@ const typeDefs = `
     _id: ID
     commentText: String
     commentAuthor: String
-    createdAt: String
-    
+    datePosted: String
   }
 
   type Auth {
@@ -37,7 +36,7 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    tools(username: String): [Tool]
+    tools: [Tool]
     tool(toolId: ID!): Tool
     unitNumber: [User]
     me: User
