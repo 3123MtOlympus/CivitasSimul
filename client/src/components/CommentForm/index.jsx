@@ -83,6 +83,6 @@ const CommentForm = ({ toolId }) => {
       )}
     </div>
   );
-};
 
+      };
 export default CommentForm;
