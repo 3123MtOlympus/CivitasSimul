@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
@@ -19,10 +20,25 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  thoughts: [
+  unitNumber: {
+    type: Int,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  phoneNumber: {
+    type: String,
+    unique: true,
+    trim: true,
+  },
+  notifiedAt: {
+    type: Date,
+    get: (timestamp) => dateFormat(timestamp)
+  },
+  tools: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Thought',
+      ref: 'Tool',
     },
   ],
 });
