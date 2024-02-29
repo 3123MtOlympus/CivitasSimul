@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 
-import ToolList from '../components/ThoughtList';
-import ToolForm from '../components/ThoughtForm';
+import ToolList from '../components/ToolList';
+import ToolForm from '../components/ToolForm';
 
 import { QUERY_TOOLS } from '../utils/queries';
 
