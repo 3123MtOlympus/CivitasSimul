@@ -21,8 +21,8 @@ const userSchema = new Schema({
     minlength: 5,
   },
   unitNumber: {
-    type: Int,
-    required: true,
+    type: String,
+    required: false,
     unique: true,
     trim: true,
   },
