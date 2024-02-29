@@ -24,12 +24,12 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const ADD_TOOLS = gql`
+  mutation addTool($toolText: String!) {
+    addThought(toolText: $toolText) {
       _id
-      thoughtText
-      thoughtAuthor
+      toolText
+      toolAuthor
       createdAt
       comments {
         _id
@@ -40,11 +40,11 @@ export const ADD_THOUGHT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+  mutation addComment($toolId: ID!, $commentText: String!) {
+    addComment(toolId: $toolId, commentText: $commentText) {
       _id
-      thoughtText
-      thoughtAuthor
+      toolText
+      toolAuthor
       createdAt
       comments {
         _id
