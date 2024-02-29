@@ -3,15 +3,21 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
+    unitNumber: int
     password: String
-    thoughts: [Thought]!
+    phoneNumber: String
+    tool: [Tool]!
+
   }
 
-  type Thought {
+  type Tool {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    toolText: String
+    toolAuthor: String
+    description:
     createdAt: String
+    isAvailable: boolean 
+    imgUrl: String!
     comments: [Comment]!
   }
 
@@ -20,6 +26,7 @@ const typeDefs = `
     commentText: String
     commentAuthor: String
     createdAt: String
+    
   }
 
   type Auth {
@@ -30,18 +37,20 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    tools(username: String): [Tool]
+    tool(toolId: ID!): Tool
+    unitNumber: [User]
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    updateUser(phoneNumber: String!, email: String!, password: String!): Auth
+    addTool(toolText: String!): Tool
+    addComment(toolId: ID!, commentText: String!): Tool
+    removeTool(toolId: ID!): Tool
+    removeComment(toolId: ID!, commentId: ID!): Tool
   }
 `;
 
