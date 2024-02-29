@@ -7,7 +7,7 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_TOOL } from '../utils/queries';
 
-const SingleThought = () => {
+const SingleTool = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { toolId } = useParams();
 
@@ -44,13 +44,13 @@ const SingleThought = () => {
       </div>
 
       <div className="my-5">
-        <CommentList comments={thought.comments} />
+        <CommentList comments={tool.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm thoughtId={tool._id} />
+        <CommentForm toolId={tool._id} />
       </div>
     </div>
   );
 };
 
-export default SingleThought;
+export default SingleTool;
