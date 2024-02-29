@@ -6,7 +6,7 @@ const ToolList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!thoughts.length) {
+  if (!tools.length) {
     return <h3>No Thoughts </h3>;
   }
 
@@ -24,13 +24,13 @@ const ToolList = ({
                 >
                   {tool.owner} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {tool.createdAt}
+                    had this thought on {tool}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {tool.createdAt}
+                    You had this thought on {tool}
                   </span>
                 </>
               )}
