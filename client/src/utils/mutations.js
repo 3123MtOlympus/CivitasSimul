@@ -26,11 +26,11 @@ export const ADD_USER = gql`
 
 export const ADD_TOOLS = gql`
   mutation addTool($toolText: String!) {
-    addThought(toolText: $toolText) {
+    addTool(toolText: $toolText) {
       _id
-      toolText
-      toolAuthor
-      createdAt
+      name
+      description
+      owner
       comments {
         _id
         commentText

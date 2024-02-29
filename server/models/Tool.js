@@ -7,6 +7,10 @@ const toolSchema = new Schema({
     required: true,
     trim: true,
   },
+  owner: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,

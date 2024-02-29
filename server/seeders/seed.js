@@ -12,6 +12,18 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
 
+    // for (let i = 0; i < toolSeeds.length; i++) {
+    //   const { _id, thoughtAuthor } = await Tool.create(toolSeeds[i]);
+    //   const user = await User.findOneAndUpdate(
+    //     { username: thoughtAuthor },
+    //     {
+    //       $addToSet: {
+    //         thoughts: _id,
+    //       },
+    //     }
+    //   );
+    // }
+
   } catch (err) {
     console.error(err);
     process.exit(1);
