@@ -3,14 +3,17 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
+    unitNumber: int
     password: String
-    thoughts: [Thought]!
+    phoneNumber: String
+    tool: [Tool]!
+
   }
 
-  type Thought {
+  type Tool {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    toolText: String
+    toolAuthor: String
     createdAt: String
     comments: [Comment]!
   }
@@ -20,6 +23,7 @@ const typeDefs = `
     commentText: String
     commentAuthor: String
     createdAt: String
+    
   }
 
   type Auth {
