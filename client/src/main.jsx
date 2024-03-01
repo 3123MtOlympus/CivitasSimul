@@ -6,7 +6,7 @@ import App from './App.jsx';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 //import SingleThought from './pages/SingleThought';
-//import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />
+        element: <Profile />
       }, {
         path: '/login',
         element: <Login />

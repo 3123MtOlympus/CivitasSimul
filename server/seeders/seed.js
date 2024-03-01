@@ -10,19 +10,20 @@ db.once('open', async () => {
 
     await cleanDB('User', 'users');
 
-    await User.create(userSeeds);
+    const users = await User.create(userSeeds);
 
-    // for (let i = 0; i < toolSeeds.length; i++) {
-    //   const { _id, thoughtAuthor } = await Tool.create(toolSeeds[i]);
-    //   const user = await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     {
-    //       $addToSet: {
-    //         thoughts: _id,
-    //       },
-    //     }
-    //   );
-    // }
+    
+    for (let i = 0; i < toolSeeds.length; i++) {
+      const { _id } = await Tool.create(toolSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { _id: users[Math.floor(Math.random()*users.length)]._id },
+        {
+          $addToSet: {
+            tools: _id,
+          },
+        }
+      );
+    }
 
   } catch (err) {
     console.error(err);

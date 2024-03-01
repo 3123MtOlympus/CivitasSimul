@@ -7,18 +7,17 @@ const typeDefs = `
     password: String
     phoneNumber: String
     notifiedAt: String
-    tools: [Tool]!
+    tools: [Tool]
 
   }
 
   type Tool {
     _id: ID
     name: String
-    owner: String
     description: String
     isAvailable: Boolean 
     imgUrl: String
-    comments: [Comment]!
+    comments: [Comment]
   }
 
   type Comment {
