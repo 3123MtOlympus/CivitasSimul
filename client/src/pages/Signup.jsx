@@ -11,7 +11,8 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    unitNumber: ''
+    unitNumber: '',
+    phoneNumber: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -74,6 +75,14 @@ const Signup = () => {
                   name="email"
                   type="email"
                   value={formState.email}
+                  onChange={handleChange}
+                />
+                 <input
+                  className="form-input"
+                  placeholder="Your Phone Number"
+                  name="phoneNumber"
+                  type="text"
+                  value={formState.phoneNumber}
                   onChange={handleChange}
                 />
                 <input
