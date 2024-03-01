@@ -25,8 +25,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, phoneNumber, unitNumber }) => {
+      const user = await User.create({ username, email, password, phoneNumber, unitNumber });
       const token = signToken(user);
       return { token, user };
     },
@@ -46,6 +46,13 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    updateUser: async (parent, { phoneNumber, email, password }) => {
+      const update = await update.create({ phoneNumber, email, password });
+      
+      
+      return { phoneNumber, email, password }
     },
     addTool: async (parent, { toolText }, context) => {
       if (context.user) {
@@ -115,6 +122,20 @@ const resolvers = {
       throw AuthenticationError;
     },
   },
+  notifyUser = async (parent, { unitNumber, phoneNumber }) => {
+    try {
+        // Assuming User is your Mongoose model
+        const user = await User.findOne({ unitNumber, phoneNumber });
+        
+        // Assuming User is found and notification is sent successfully
+        console.log('Thanks for being NeighborLY!');
+        return 'Notification sent successfully';
+    } catch (error) {
+        // If there's an error in finding the user or sending notification
+        console.error(error);
+        throw new AuthenticationError('Failed to notify user');
+    }
+};
 };
 
 module.exports = resolvers;

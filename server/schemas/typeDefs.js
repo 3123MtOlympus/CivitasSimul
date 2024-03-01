@@ -43,13 +43,15 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, phoneNumber: String, unitNumber: String): Auth
     login(email: String!, password: String!): Auth
     updateUser(phoneNumber: String!, email: String!, password: String!): Auth
-    addTool(toolText: String!): Tool
+    addTool(name: String, description: String, isAvailable: boolean, owner: String, imgUrl: String): Tool
     addComment(toolId: ID!, commentText: String!): Tool
     removeTool(toolId: ID!): Tool
     removeComment(toolId: ID!, commentId: ID!): Tool
+  notifyUser( unitNumber: String!)
+    
   }
 `;
 
