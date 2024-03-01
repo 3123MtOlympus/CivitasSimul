@@ -1,26 +1,26 @@
 [
   {
     "name": "Ladder",
-    "desciption": "5 foot ladder, light weight",
-    "isAvailable": "True",
+    "description": "5 foot ladder, light weight",
+    "isAvailable": false,
     "imgUrl": "https://res.cloudinary.com/dwjrsllb0/image/upload/v1709191279/pr3/49580874_peg3yq.jpg"
   },
   {
     "name": "Shoping cart",
-    "desciption": "5 foot ladder, light weight",
-    "isAvailable": "True",
+    "description": "5 foot ladder, light weight",
+    "isAvailable": true,
     "imgUrl": "https://res.cloudinary.com/dwjrsllb0/image/upload/v1709191346/pr3/dmi-janitorial-carts-640-8213-0200-64_600_skw1zi.jpg"
   },
   {
     "name": "Bike pump",
-    "desciption": "5 foot ladder, light weight",
-    "isAvailable": "True",
+    "description": "5 foot ladder, light weight",
+    "isAvailable": true,
     "imgUrl": "https://res.cloudinary.com/dwjrsllb0/image/upload/v1709191444/pr3/husky-tire-inflators-bp20-64_600_yu71mb.jpg"
   },
   {
     "name": "Balloon Helium",
-    "desciption": "Allmost full helium tank",
-    "isAvailable": "True",
+    "description": "Allmost full helium tank",
+    "isAvailable": true,
     "imgUrl": "https://res.cloudinary.com/dwjrsllb0/image/upload/v1709191412/pr3/819cahhZNaL._AC_UF894_1000_QL80__uhcdbv.jpg",
     "comments": [
       {
