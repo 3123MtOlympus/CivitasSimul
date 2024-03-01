@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_TOOLS = gql`
+export const ADD_TOOL = gql`
   mutation addTool($toolText: String!) {
     addTool(toolText: $toolText) {
       _id
