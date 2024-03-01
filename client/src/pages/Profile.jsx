@@ -1,8 +1,8 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import ToolForm from '../components/ToolForm';
-import ToolList from '../components/ToolList';
+//import ToolForm from '../components/ToolForm';
+//import ToolList from '../components/ToolList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -18,7 +18,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
+    return <Navigate to="/" />;
   }
 
   if (loading) {
@@ -42,19 +42,19 @@ const Profile = () => {
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
-          <ToolList
+          {/* <ToolList
             tools={user.tools}
             title={`${user.username}'s tools...`}
             showTitle={false}
             showUsername={false}
-          />
+          /> */}
         </div>
         {!userParam && (
           <div
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
-            <ToolForm />
+            {/* <ToolForm /> */}
           </div>
         )}
       </div>
