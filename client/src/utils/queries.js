@@ -1,46 +1,66 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-      }
-    }
-  }
-`;
-
-export const QUERY_TOOLS = gql`
-  query getTools {
+query users {
+  users {
+    _id
+    username
+    email
+    unitNumber
+    password
+    phoneNumber
+    notifiedAt
     tools {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
-  }
-`;
-
-export const QUERY_SINGLE_TOOL = gql`
-  query getSingleTool($toolId: ID!) {
-    thought(toolId: $toolId) {
-      _id
-      toolText
-      toolAuthor
-      createdAt
+      name
+      description
+      isAvailable
+      imgUrl
       comments {
         _id
         commentText
         commentAuthor
-        createdAt
+        datePosted
       }
     }
   }
+}
+`;
+
+export const QUERY_TOOLS = gql`
+query getTools {
+  tools {
+    _id
+    name
+    description
+    isAvailable
+    imgUrl
+    comments {
+      _id
+      commentText
+      commentAuthor
+      datePosted
+    }
+  }
+}
+`;
+
+export const QUERY_SINGLE_TOOL = gql`
+query getSingleTool($toolId: ID!) {
+  tool(toolId: $toolId) {
+    _id
+    name
+    description
+    isAvailable
+    imgUrl
+    comments {
+      _id
+      commentText
+      commentAuthor
+      datePosted
+    }
+  }
+}
 `;
 
 export const QUERY_ME = gql`
@@ -49,11 +69,16 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      unitNumber
+      password
+      phoneNumber
+      notifiedAt
       tools {
         _id
-        toolText
-        toolAuthor
-        createdAt
+        name
+        description
+        isAvailable
+        imgUrl
       }
     }
   }
