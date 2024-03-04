@@ -1706,3 +1706,10 @@ label form [type='radio'] {
     align-content: center;
   }
 }
+
+.imgBG {
+  background-image: url(/NeighborLY/client/src/assets/images/bg.png);
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+}
