@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import {useEffect } from 'react';
 
 //import ToolForm from '../components/ToolForm';
-//import ToolList from '../components/ToolList';
+import ToolList from '../components/ToolList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -44,12 +44,22 @@ const Profile = () => {
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
-          {/* <ToolList
+          <div  className="card mb-3">
+            <h4 className="card-header bg-primary text-light p-2 m-0">
+              Email:
+            
+            <span style={{ fontSize: '1rem' }}> {user.email} </span>
+            </h4>
+            <h4 className="card-header bg-primary text-light p-2 m-0"> 
+              Phone Number: <span style={{ fontSize: '1rem' }}>{user.phoneNumber}</span>
+            </h4>
+          </div>
+          
+          {user.tools?(
+            <ToolList
             tools={user.tools}
-            title={`${user.username}'s tools...`}
-            showTitle={false}
-            showUsername={false}
-          /> */}
+           />
+           ):(<div></div>)}
         </div>
        
       </div>
