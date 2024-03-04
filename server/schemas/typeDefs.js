@@ -48,8 +48,7 @@ const typeDefs = `
     addComment(toolId: ID!, commentText: String!): Tool
     removeTool(toolId: ID!): Tool
     removeComment(toolId: ID!, commentId: ID!): Tool
-  notifyUser( unitNumber: String!)
-    
+    sendEmail(unitNumber: String!): Auth
   }
 `;
 
