@@ -17,7 +17,6 @@ const typeDefs = `
     description: String
     isAvailable: Boolean 
     imgUrl: String
-    comments: [Comment]
   }
 
   type Comment {
