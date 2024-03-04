@@ -11,7 +11,8 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    unitNumber: ''
+    unitNumber: '',
+    phoneNumber: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -47,8 +48,8 @@ const Signup = () => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                Welcome{' '}!
+                <Link to="/"></Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
@@ -74,6 +75,14 @@ const Signup = () => {
                   name="email"
                   type="email"
                   value={formState.email}
+                  onChange={handleChange}
+                />
+                 <input
+                  className="form-input"
+                  placeholder="Your Phone Number"
+                  name="phoneNumber"
+                  type="text"
+                  value={formState.phoneNumber}
                   onChange={handleChange}
                 />
                 <input
