@@ -17,16 +17,18 @@ const resolvers = {
       return Tool.findOne({ _id: toolId });
     },
     me: async (parent, args, context) => {
+      console.log("at me")
+      console.log(context.user)
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('Tools');
+        return User.findOne({ _id: context.user._id }).populate('tools');
       }
       throw AuthenticationError;
     },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, unitNumber }) => {
+      const user = await User.create({ username, email, password, unitNumber });
       const token = signToken(user);
       return { token, user };
     },
