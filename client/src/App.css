@@ -386,6 +386,8 @@ text-align: center;
 
 h3 {
   font-size: 1.75rem;
+  color:#d9e9e8;
+  text-shadow: 1px 2px 3px rgb(15, 12, 5);
   
 }
 
@@ -411,10 +413,10 @@ p {
   font-size: 1.1rem;
   margin: 0 0 1rem;
   line-height: 1.5;
-  color: whitesmoke;
+  color: white;
   padding: 14px;
-  background-color: #2d3e50ad;
-  border-radius: 5px;
+  border: 2px solid rgba(238, 232, 216, 0.342);
+  border-radius: 1px;
   text-align: center;
 }
 
@@ -558,7 +560,7 @@ a:hover {
   width: 75%;
   height: 550px;
   border: 1px solid #1a1a1a;
-  background-color: rgba(104, 76, 4, 0.603);
+  background-color: rgba(104, 76, 4, 0.909);
   margin: 0 auto;
   margin-top: 250px;
   box-shadow: 3px 3px 3px ;
