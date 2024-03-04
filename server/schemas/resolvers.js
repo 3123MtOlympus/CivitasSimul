@@ -56,12 +56,15 @@ const resolvers = {
       return updatedUser;
     },
 
-    addTool: async (parent, { toolText }, context) => {
-      if (context.user) {
+    addTool: async (parent, { name, description, imgUrl }, context) => {
+      if(name && description && imgUrl) {
         const tool = await Tool.create({
-          toolText,
-          owner: context.user.username,
+          name: name,
+          description: description,
+          imgUrl: imgUrl
         });
+
+        if(context){
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -69,6 +72,7 @@ const resolvers = {
         );
 
         return tool;
+        }
       }
       throw AuthenticationError;
       ('You need to be logged in!');
@@ -136,8 +140,8 @@ const resolvers = {
       console.log(email);
 
       const mailjet = new Mailjet({
-        apiKey: process.env.MJ_APIKEY_PUBLIC, //|| '0d3d2d0b4a2235f868be0fbc7ff03a84',
-        apiSecret: process.env.MJ_APIKEY_PRIVATE //|| 'cb2611c841e8b331d6ae14d2a77f872c'
+        apiKey: process.env.MJ_APIKEY_PUBLIC, 
+        apiSecret: process.env.MJ_APIKEY_PRIVATE 
       });
 
       const request = mailjet
@@ -173,20 +177,20 @@ const resolvers = {
     },
   },
 
-  notifyUser: async (parent, { unitNumber, email }) => {
-    try {
-        // Assuming User is your Mongoose model
-        const user = await User.findOne({ unitNumber, email });
+//   notifyUser: async (parent, { unitNumber, email }) => {
+//     try {
+//         // Assuming User is your Mongoose model
+//         const user = await User.findOne({ unitNumber, email });
         
-        // Assuming User is found and notification is sent successfully
-        console.log('Thanks for being NeighborLY!');
-        return 'Notification sent successfully';
-    } catch (error) {
-        // If there's an error in finding the user or sending notification
-        console.error(error);
-        throw new AuthenticationError('Failed to notify user');
-    }
-}
+//         // Assuming User is found and notification is sent successfully
+//         console.log('Thanks for being NeighborLY!');
+//         return 'Notification sent successfully';
+//     } catch (error) {
+//         // If there's an error in finding the user or sending notification
+//         console.error(error);
+//         throw new AuthenticationError('Failed to notify user');
+//     }
+// }
 };
 
 module.exports = resolvers;
