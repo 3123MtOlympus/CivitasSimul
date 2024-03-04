@@ -173,20 +173,6 @@ const resolvers = {
     },
   },
 
-  notifyUser: async (parent, { unitNumber }) => {
-    try {
-        // Assuming User is your Mongoose model
-        const user = await User.findOne({ unitNumber });
-        
-        // Assuming User is found and notification is sent successfully
-        console.log('Thanks for being NeighborLY!');
-        return 'Notification sent successfully';
-    } catch (error) {
-        // If there's an error in finding the user or sending notification
-        console.error(error);
-        throw new AuthenticationError('Failed to notify user');
-    }
-}
 };
 
 module.exports = resolvers;
