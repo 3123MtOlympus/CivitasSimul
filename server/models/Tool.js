@@ -16,30 +16,12 @@ const toolSchema = new Schema({
   },
   isAvailable: {
     type: Boolean,
+    default: true,
   },
   imgUrl: {
     type: String,
     required: true,
   },
-  comments: [
-    {
-      commentText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      commentAuthor: {
-        type: String,
-        required: true,
-      },
-      datePosted: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
-    },
-  ],
 });
 
 const Tool = model('Tool', toolSchema);

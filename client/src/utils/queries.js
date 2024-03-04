@@ -16,12 +16,6 @@ query users {
       description
       isAvailable
       imgUrl
-      comments {
-        _id
-        commentText
-        commentAuthor
-        datePosted
-      }
     }
   }
 }
@@ -35,12 +29,6 @@ query getTools {
     description
     isAvailable
     imgUrl
-    comments {
-      _id
-      commentText
-      commentAuthor
-      datePosted
-    }
   }
 }
 `;
@@ -53,12 +41,6 @@ query getSingleTool($toolId: ID!) {
     description
     isAvailable
     imgUrl
-    comments {
-      _id
-      commentText
-      commentAuthor
-      datePosted
-    }
   }
 }
 `;
