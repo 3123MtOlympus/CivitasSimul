@@ -20,8 +20,10 @@
     "url": "https://github.com/3123MtOlympus/NeighborLY/issues"
   },
   "homepage": "https://github.com/3123MtOlympus/NeighborLY#readme",
-
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "node-mailjet": "^6.0.5"
   }
 }
