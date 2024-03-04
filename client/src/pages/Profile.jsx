@@ -1,6 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import {useEffect } from 'react';
+import { useEffect } from 'react';
 
 //import ToolForm from '../components/ToolForm';
 import ToolList from '../components/ToolList';
@@ -14,10 +14,10 @@ const Profile = () => {
 
   const { loading, data } = useQuery(QUERY_ME);
 
-  const user = data?.me  || {};
-  useEffect(()=> {
+  const user = data?.me || {};
+  useEffect(() => {
     console.log(data);
-  },[data])
+  }, [data])
   // navigate to personal profile page if username is yours
   // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
   //   return <Navigate to="/" />;
@@ -39,29 +39,31 @@ const Profile = () => {
   return (
     <div>
       <div className="justify-center">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {`${user.username}'s`} profile.
-        </h2>
 
-        <div className="col-12 col-md-10 mb-5">
-          <div  className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              Email:
-            
-            <span style={{ fontSize: '1rem' }}> {user.email} </span>
-            </h4>
-            <h4 className="card-header bg-primary text-light p-2 m-0"> 
-              Phone Number: <span style={{ fontSize: '1rem' }}>{user.phoneNumber}</span>
-            </h4>
+        <div className="card">
+
+          <div>
+            <h3>
+              Viewing {`${user.username}'s`} profile
+            </h3>
+            <div>
+              <h4>
+                Email:<span style={{ fontSize: '1rem' }}> {user.email} </span>
+              </h4>
+              <h4>
+                Phone Number: <span style={{ fontSize: '1rem' }}>{user.phoneNumber}</span>
+              </h4>
+            </div>
           </div>
           
-          {user.tools?(
+
+          {user.tools ? (
             <ToolList
-            tools={user.tools}
-           />
-           ):(<div></div>)}
+              tools={user.tools}
+            />
+          ) : (<div></div>)}
         </div>
-       
+
       </div>
     </div>
   );

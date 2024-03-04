@@ -124,10 +124,10 @@ const resolvers = {
     },
   },
 
-  notifyUser: async (parent, { unitNumber, email }) => {
+  notifyUser: async (parent, { unitNumber }) => {
     try {
         // Assuming User is your Mongoose model
-        const user = await User.findOne({ unitNumber, email });
+        const user = await User.findOne({ unitNumber });
         
         // Assuming User is found and notification is sent successfully
         console.log('Thanks for being NeighborLY!');
