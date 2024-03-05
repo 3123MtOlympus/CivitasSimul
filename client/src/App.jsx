@@ -7,9 +7,13 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+import React from 'react';
+
+
 
 import Header from './components/Header';
 // import Footer from './components/Footer';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,6 +44,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="imgBG">
         <Header />
+       
         <div className="container">
           <Outlet />
         </div>

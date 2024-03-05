@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
 //import Home from './pages/Home';
+
+
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 //import SingleThought from './pages/SingleThought';
@@ -36,6 +38,7 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
