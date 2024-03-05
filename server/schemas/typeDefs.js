@@ -59,7 +59,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, unitNumber: String!): Auth
+    addUser(username: String!, email: String!, password: String!, phoneNumber: String, unitNumber: String): Auth
     login(email: String!, password: String!): Auth
     updateUser(phoneNumber: String!, email: String!, password: String!): Auth
     addTool(toolText: String!): Tool
@@ -67,6 +67,7 @@ const typeDefs = `
     removeComment(toolId: ID!, commentId: ID!): Tool
     addPost(title: String!, postText: String!, postImg: String, postAuthor: String!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Comment
+    sendEmail(unitNumber: String!): Auth
   }
 `;
 

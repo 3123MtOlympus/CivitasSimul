@@ -11,7 +11,8 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    unitNumber: ''
+    unitNumber: '',
+    phoneNumber: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -40,42 +41,55 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+    <main className=" justify-center mb-4">
+      <div className="">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                Welcome{' '}!
+                <Link to="/"></Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+                <h3>Join our Community</h3>
+                <h6>Enter Username:</h6>
                 <input
                   className="form-input"
-                  placeholder="Your username"
+                  placeholder="Username"
                   name="username"
                   type="text"
                   value={formState.username}
                   onChange={handleChange}
                 />
+                <h6>Enter Unit Number:</h6>
                 <input
                   className="form-input"
-                  placeholder="Your Unit Number"
+                  placeholder="Unit Number"
                   name="unitNumber"
                   type="text"
                   value={formState.unitNumber}
                   onChange={handleChange}
                 />
+                <h6>Enter Email:</h6>
                 <input
                   className="form-input"
-                  placeholder="Your email"
+                  placeholder="Email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <h6>Enter Phone Number:</h6>
+                 <input
+                  className="form-input"
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                  type="text"
+                  value={formState.phoneNumber}
+                  onChange={handleChange}
+                />
+                <h6>Enter Password:</h6>
                 <input
                   className="form-input"
                   placeholder="******"

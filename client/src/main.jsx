@@ -8,7 +8,7 @@ import Login from './pages/Login';
 //import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
-import CommunityBoard from './pages/CommunityBoard';
+import Board from './pages/Board';
 
 const router = createBrowserRouter([
   {
@@ -25,13 +25,14 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      },// {
-      //   path: '/',
-      //   element: <Board/>
-      // }
+      }, {
+         path: '/board',
+         element: <Board/>
+       }
     ]
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
