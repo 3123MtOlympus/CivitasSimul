@@ -10,9 +10,9 @@ const Board = () => {
   const welcome = "Welcome to The Community Board";
   
   return (
-    <div className="justify-center">
+    <div className="justify-center ">
 
-        <div className="card">
+        <div className="community">
 
  
    
