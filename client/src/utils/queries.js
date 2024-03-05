@@ -45,6 +45,25 @@ query getSingleTool($toolId: ID!) {
 }
 `;
 
+export const QUERY_POSTS = gql`
+query getPosts {
+  posts {
+    _id
+    title
+    postText
+    postImg
+    postAuthor
+    datePosted
+    comments {
+      _id
+      commentText
+      commentAuthor
+      datePosted
+    }
+  }
+}
+`;
+
 export const QUERY_ME = gql`
   query me {
     me {
