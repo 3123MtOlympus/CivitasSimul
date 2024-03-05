@@ -24,7 +24,7 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
-    "node-mailjet": "^6.0.5",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "node-mailjet": "^6.0.5"
   }
 }

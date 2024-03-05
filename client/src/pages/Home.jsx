@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import ToolList from '../components/ToolList';
 import ToolForm from '../components/ToolForm';
-
+import "../App.css" 
 import { QUERY_TOOLS } from '../utils/queries';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
   const tools = data?.tools || [];
 
   return (
-    <main>
+    <main className="imgBG">
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
