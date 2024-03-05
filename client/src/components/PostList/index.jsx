@@ -21,11 +21,11 @@ const PostList = () => {
       {posts &&
         posts.map((post) => (
         
-          <div key={post._id} className="card mb-3">
-             <div className="card-body bg-light p-2">
+          <div key={post._id} >
+             {/* <div className="card p-2">
               <p>Post:</p>
-            </div>
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+            </div> */}
+            <h4 className=" bg-primary text-light p-2 m-0">
               
                 <Link
                   className="text-light"

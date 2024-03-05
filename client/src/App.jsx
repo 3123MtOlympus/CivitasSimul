@@ -46,7 +46,7 @@ console.log(location)
 
   return (
     <ApolloProvider client={client}>
-      <div className={location === "/package" ? "otherBG" : location === "/board" ? "thirdBG" : location === "/tools" ? "fourthBG" : "imageBG" }>
+      <div className={location === "/package" ? "otherBG" : location === "/board" ? "thirdBG" : location === "/tools" ? "fourthBG" : location === "/" ? "imageBG" : "imageBG" } >
         <Header />
        
         <div className="container">
