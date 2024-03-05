@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App.jsx';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -38,6 +38,7 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

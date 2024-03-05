@@ -6,10 +6,14 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import React from 'react';
+
+
 
 import Header from './components/Header';
 // import Footer from './components/Footer';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -36,10 +40,15 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+const location = useLocation().pathname
+console.log(location)
+
   return (
     <ApolloProvider client={client}>
-      <div className="imgBG">
+      <div className={location === "/" ? "imgBG" : location === "/package" ? "otherBG" : location === "/board" ? "thirdBG" : "fourthBG" }>
         <Header />
+       
         <div className="container">
           <Outlet />
         </div>
