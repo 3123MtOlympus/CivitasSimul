@@ -1,4 +1,4 @@
-const { User, Tool } = require('../models');
+const { User, Tool, Board } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -23,6 +23,12 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate('tools');
       }
       throw AuthenticationError;
+    },
+    posts: async () => {
+      return Board.find();
+    },
+    post: async (parent, { postId }) => {
+      return Board.findOne({ _id: postId });
     },
   },
 
@@ -72,23 +78,6 @@ const resolvers = {
       throw AuthenticationError;
       ('You need to be logged in!');
     },
-    addComment: async (parent, { toolId, commentText }, context) => {
-      if (context.user) {
-        return Tool.findOneAndUpdate(
-          { _id: toolId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw AuthenticationError;
-    },
     removeTool: async (parent, { toolId }, context) => {
       if (context.user) {
         const tool = await Tool.findOneAndDelete({
@@ -122,6 +111,16 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    addPost: async (parent, { title, postText, postImg, postAuthor}) => {
+      return Post.create({ title, postText, postImg, postAuthor });
+    },
+    addComment: async (parent, { postId, commentText }) => {
+      return Post.findOneAndUpdate ( 
+        {_id: postId },
+        { $addToSet : { comments: { commentText } }},
+        { runValidators: true, new: true}
+      )
+    }
   },
 };
 

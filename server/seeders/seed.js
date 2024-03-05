@@ -1,7 +1,8 @@
 const db = require('../config/connection');
-const { User, Tool } = require('../models');
+const { User, Tool, Board } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const toolSeeds = require('./toolSeeds.json');
+const boardSeeds = require('./boardSeeds.json');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
@@ -10,9 +11,12 @@ db.once('open', async () => {
 
     await cleanDB('User', 'users');
 
-    const users = await User.create(userSeeds);
+    await cleanDB('Board', 'boards');
 
+    const users = await User.create(userSeeds);
     
+    await Board.create(boardSeeds);
+
     for (let i = 0; i < toolSeeds.length; i++) {
       const { _id } = await Tool.create(toolSeeds[i]);
       const user = await User.findOneAndUpdate(
@@ -24,7 +28,7 @@ db.once('open', async () => {
         }
       );
     }
-
+    
   } catch (err) {
     console.error(err);
     process.exit(1);
