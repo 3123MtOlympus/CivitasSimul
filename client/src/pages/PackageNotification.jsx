@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import {useEffect } from 'react';
-
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { SEND_EMAIL } from '../utils/mutations';
 
-import Auth from '../utils/auth';
 
 const PackageNotification = () => {
     const [formState, setFormState] = useState([]);
@@ -55,13 +52,11 @@ const PackageNotification = () => {
 
   return (
     <div>
-  <h1> Thanks for Being NeighborLY</h1>
-  
-
       <div className="justify-center">
 
 <div className="othercard">
-
+<h3>Help keep our Mail room clean. 
+  <br></br>Notify our neighbors of their packages</h3>
         <div className="col-12 col-md-10 mb-5">
             <form onSubmit={handleFormSubmit} >
                 
