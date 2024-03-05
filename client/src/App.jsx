@@ -9,7 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -38,14 +38,41 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="imgBG">
         <Header />
         <div className="container">
           <Outlet />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ApolloProvider>
+  );
+}
+
+function Notify(){
+  const [userName, setUserName] = useState('');
+
+  const handleNotify = async () => {
+    try {
+      await axios.post('/api/notify', { userName });
+      alert(`Package for ${userName} has arrived! Notification sent.`);
+    } catch (error) {
+      console.error(error);
+      alert('Error notifying user');
+    }
+  };
+
+  return (
+    <div className="App">
+      <h1>Package Notification System</h1>
+      <input
+        type="text"
+        placeholder="Enter Unit Number"
+        value={userName}
+        onChange={(e) => setUnitNumber(e.target.value)}
+      />
+      <button onClick={handleNotify}>Notify User</button>
+    </div>
   );
 }
 

@@ -1,5 +1,6 @@
 const { User, Tool, Board } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const Mailjet = require('node-mailjet');
 
 const resolvers = {
   Query: {
@@ -33,8 +34,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password, unitNumber }) => {
-      const user = await User.create({ username, email, password, unitNumber });
+    addUser: async (parent, { username, email, password, phoneNumber, unitNumber }) => {
+      const user = await User.create({ username, email, password, phoneNumber, unitNumber });
       const token = signToken(user);
       return { token, user };
     },
@@ -61,12 +62,21 @@ const resolvers = {
       // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
-    addTool: async (parent, { toolText }, context) => {
-      if (context.user) {
+
+    updateUser: async (parent, { id, phoneNumber, email, password }) => {
+      const updatedUser = await User.findOneAndUpdate({ _id:id }, { phoneNumber, email, password }, {new:true});
+      return updatedUser;
+    },
+
+    addTool: async (parent, { name, description, imgUrl }, context) => {
+      if(name && description && imgUrl) {
         const tool = await Tool.create({
-          toolText,
-          owner: context.user.username,
+          name: name,
+          description: description,
+          imgUrl: imgUrl
         });
+
+        if(context){
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -74,6 +84,7 @@ const resolvers = {
         );
 
         return tool;
+        }
       }
       throw AuthenticationError;
       ('You need to be logged in!');
@@ -111,6 +122,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+
     addPost: async (parent, { title, postText, postImg, postAuthor}) => {
       return Post.create({ title, postText, postImg, postAuthor });
     },
@@ -121,7 +133,71 @@ const resolvers = {
         { runValidators: true, new: true}
       )
     }
+
+    sendEmail: async (parent, { unitNumber }) => {
+      const user = await User.findOne({ unitNumber });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const email = user.email;
+      console.log("Should be emailing unit# and email:");
+      console.log(unitNumber);
+      console.log(email);
+
+      const mailjet = new Mailjet({
+        apiKey: process.env.MJ_APIKEY_PUBLIC, 
+        apiSecret: process.env.MJ_APIKEY_PRIVATE 
+      });
+
+      const request = mailjet
+      .post('send', { version: 'v3.1' })
+      .request({
+          "Messages":[
+            {
+              "From": {
+                "Email": "sofiaboubion@gmail.com",
+                "Name": "NeighborLY"
+              },
+              "To": [
+                {
+                  "Email": "ariadnasv5@hotmail.com",
+                  "Name": "Sofia"
+                }
+              ],
+              "Subject": "Greetings",
+              "TextPart": "My first Mailjet email",
+              "HTMLPart": "<h3>Dear Neighbor, You have a package. </h3><br />May the delivery force be with you!",
+            }
+          ]
+        })
+        request
+          .then((result) => {
+            console.log(result.body)
+          })
+          .catch((err) => {
+            console.log(err.statusCode)
+          })
+
+
+    },
   },
+
+//   notifyUser: async (parent, { unitNumber, email }) => {
+//     try {
+//         // Assuming User is your Mongoose model
+//         const user = await User.findOne({ unitNumber, email });
+        
+//         // Assuming User is found and notification is sent successfully
+//         console.log('Thanks for being NeighborLY!');
+//         return 'Notification sent successfully';
+//     } catch (error) {
+//         // If there's an error in finding the user or sending notification
+//         console.error(error);
+//         throw new AuthenticationError('Failed to notify user');
+//     }
+// }
 };
 
 module.exports = resolvers;

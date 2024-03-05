@@ -44,15 +44,20 @@ const Login = (props) => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+          <div className="card-body w-5">
             {data ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
+              
+             <form onSubmit={handleFormSubmit}>
+              <h2> Welcome!
+              </h2>
+               <p className='w-5'>NeighborLY, powered by Civitas Simul, is committed to fostering a sense of community and connection among residents of our apartment community. Our mission is to provide a convenient and user-friendly platform that enhances communication, encourages collaboration, and promotes neighborly interactions. Through innovative features and personalized services, NeighborLY aims to create a vibrant and inclusive living environment where residents feel valued, supported, and connected to one another.</p>
+             
+                <h6>Email:</h6>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -61,6 +66,7 @@ const Login = (props) => {
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <h6>Password:</h6>
                 <input
                   className="form-input"
                   placeholder="******"
@@ -68,7 +74,7 @@ const Login = (props) => {
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
-                />
+                /> 
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
