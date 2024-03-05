@@ -54,8 +54,8 @@ const typeDefs = `
     tool(toolId: ID!): Tool
     unitNumber: [User]
     me: User
-    posts: [Board]
-    post(postId: ID!): Board
+    posts: [Post]
+    post(postId: ID!): Post
   }
 
   type Mutation {

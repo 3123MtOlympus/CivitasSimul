@@ -1,4 +1,4 @@
-const { User, Tool, Board } = require('../models');
+const { User, Tool, Board, Post } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const Mailjet = require('node-mailjet');
 
@@ -26,10 +26,10 @@ const resolvers = {
       throw AuthenticationError;
     },
     posts: async () => {
-      return Board.find();
+      return Post.find();
     },
     post: async (parent, { postId }) => {
-      return Board.findOne({ _id: postId });
+      return Post.findOne({ _id: postId });
     },
   },
 
