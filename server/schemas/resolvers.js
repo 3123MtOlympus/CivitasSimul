@@ -132,7 +132,7 @@ const resolvers = {
         { $addToSet : { comments: { commentText } }},
         { runValidators: true, new: true}
       )
-    }
+    },
 
     sendEmail: async (parent, { unitNumber }) => {
       const user = await User.findOne({ unitNumber });
