@@ -37,7 +37,7 @@ const Profile = () => {
   // }
 
   return (
-    <div>
+    <div >
       <div className="justify-center">
 
         <div className="card">

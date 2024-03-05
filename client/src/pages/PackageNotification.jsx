@@ -55,10 +55,12 @@ const PackageNotification = () => {
 
   return (
     <div>
+  <h1> Thanks for Being NeighborLY</h1>
+  
+
       <div className="justify-center">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Signed in 
-        </h2>
+
+<div className="othercard">
 
         <div className="col-12 col-md-10 mb-5">
             <form onSubmit={handleFormSubmit} >
@@ -81,6 +83,7 @@ const PackageNotification = () => {
         </div>
        
       </div>
+    </div>
     </div>
   );
 };
