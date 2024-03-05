@@ -20,7 +20,6 @@ const toolSchema = new Schema({
   },
   imgUrl: {
     type: String,
-    required: true,
   },
 });
 

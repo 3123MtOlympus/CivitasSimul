@@ -2,7 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 
-//import ToolForm from '../components/ToolForm';
+import ToolForm from '../components/ToolForm';
 import ToolList from '../components/ToolList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -52,10 +52,10 @@ const Profile = () => {
 
       
       <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
+        Add a Tool
       </button>
 
-      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -63,11 +63,11 @@ const Profile = () => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              The form goes here
+              { <ToolForm /> }
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Add Tool</button>
+              
             </div>
           </div>
         </div>

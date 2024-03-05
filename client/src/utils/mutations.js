@@ -25,18 +25,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_TOOL = gql`
-  mutation addTool($toolText: String!) {
-    addTool(toolText: $toolText) {
-      _id
-      name
-      description
-      owner
-      comments {
-        _id
-        commentText
-      }
-    }
+mutation addTool($name: String!, $description: String!, $imgUrl: String) {
+  addTool(name: $name, description: $description, imgUrl: $imgUrl) {
+    _id
+    name
+    description
+    isAvailable
+    imgUrl
   }
+}
 `;
 
 export const ADD_COMMENT = gql`

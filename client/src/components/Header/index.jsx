@@ -10,23 +10,23 @@ const Header = () => {
   };
   return (
     <header className=" text-light mb-4 px-3 d-flex justify-content-between align-center">
-      <div clasName="navAbove">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">NeighborLY</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+      <div className="navAbove">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">NeighborLY</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/package">Notify Package</a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/package">Notify Package</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/board">Community Board</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/board">Community Board</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/tools">Tool Library</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/tools">Tool Library</a>
               </li>
             </ul>
           </div>
