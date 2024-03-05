@@ -13,10 +13,10 @@ const typeDefs = `
 
   type Tool {
     _id: ID
-    name: String
-    description: String
+    name: String!
+    description: String!
     isAvailable: Boolean 
-    imgUrl: String
+    imgUrl: String!
   }
 
   type Board {
@@ -62,7 +62,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!, phoneNumber: String, unitNumber: String): Auth
     login(email: String!, password: String!): Auth
     updateUser(phoneNumber: String!, email: String!, password: String!): Auth
-    addTool(toolText: String!): Tool
+    addTool(name: String!, description: String!, imgUrl: String!): Tool
     removeTool(toolId: ID!): Tool
     removeComment(toolId: ID!, commentId: ID!): Tool
     addPost(title: String!, postText: String!, postImg: String, postAuthor: String!): Post

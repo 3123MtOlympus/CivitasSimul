@@ -86,8 +86,7 @@ const resolvers = {
         return tool;
         }
       }
-      throw AuthenticationError;
-      ('You need to be logged in!');
+      throw AuthenticationError('You need to be logged in!');
     },
     removeTool: async (parent, { toolId }, context) => {
       if (context.user) {
