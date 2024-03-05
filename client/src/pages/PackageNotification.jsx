@@ -52,13 +52,11 @@ const PackageNotification = () => {
 
   return (
     <div>
-  <h1> Thanks for Being NeighborLY</h1>
-  
-
       <div className="justify-center">
 
 <div className="othercard">
-
+<h3>Help keep our Mail room clean. 
+  <br></br>Notify our neighbors of their packages</h3>
         <div className="col-12 col-md-10 mb-5">
             <form onSubmit={handleFormSubmit} >
                 

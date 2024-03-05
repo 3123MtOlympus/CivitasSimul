@@ -55,7 +55,7 @@ const ToolLibrary = () => {
   return (
     <div>
       <div className="justify-center">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2 className="col-12 col-md-10 bg-dark text-light  mb-5">
           Tool Library 
         </h2>
 

@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Navbar, Container, Row, Col } from 'react-bootstrap';
 import Auth from '../../utils/auth';
-
+import Login from '../../pages/Login';
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+   
   };
   return (
     <header className=" text-light mb-4 px-3 d-flex justify-content-between align-center">
@@ -37,12 +38,13 @@ const Header = () => {
 
           {Auth.loggedIn() ? (
             <div>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
+              <Link className="btn btn-lg btn-info m-2" to="/">
                 {Auth.getProfile().data.username}'s profile
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <Link className="btn btn-lg btn-light m-2" 
+               to="/login">
                 Logout
-              </button>
+              </Link>
             </div>
           ) : (
             <>

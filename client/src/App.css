@@ -382,13 +382,18 @@ h2 {
   text-shadow: 1px 2px 3px rgb(55, 40, 1);
 text-align: center;
 
+
 }
 
 h3 {
   font-size: 1.75rem;
   color:#d9e9e8;
   text-shadow: 1px 2px 3px rgb(15, 12, 5);
-  
+  border: 1px solid grey;
+  text-align: center;
+  background: #dd96085e;
+  width: 50%;
+  margin: 0 auto;
 }
 
 h4 {
@@ -566,15 +571,13 @@ a:hover {
   box-shadow: 3px 3px 3px ;
 }
 .othercard { 
-  display: flex;
+  display: flexbox;
   width: 75%;
   height: 550px;
-  border: 1px solid #1a1a1a;
-  background-color: rgba(104, 76, 4, 0.909);
   margin: 0 auto;
-  margin-top: 25px;
-  box-shadow: 3px 3px 3px ;
-  text-align: center;
+margin-left: 600px;;
+  margin-top: 250px;
+  text-align: left;
 }
 
 .card .card-header {
@@ -600,6 +603,10 @@ a:hover {
 
 .card.card-rounded .card-header {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-img{
+  width: 25%;
 }
 
                               /* FORMS */
@@ -1208,18 +1215,25 @@ label form [type='radio'] {
 }
 
 .otherBG {
-  background-color: url(./);
+  background-image: url("./assets/images/package1.png");
   height: 100vh;
   width: 100%;
   background-size: cover;
 }
 
 .thirdBG {
-background-color: red;
+background-image: url("./assets/images/community.png");
 height: 100vh;
 width: 100%;
-background-size: cover
+background-size: cover;
 }
+
+.fourthBG {
+  background-image: url("./assets/images/tools.png");
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  }
 .navAbove {
   border: 2px solid rgb(42, 16, 16);
   background-color: darkkhaki;
