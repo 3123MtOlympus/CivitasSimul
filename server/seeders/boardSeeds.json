@@ -1,0 +1,27 @@
+[
+    {
+        "boardName" : "Commuinty Board",
+        "posts": [
+            {
+                "title": "Grad Party",
+                "postText" : "Grad Party at Brian's not Bryan's",
+                "postAuthor" : "Brian Kernighan"
+            },
+            {
+                "title": "Tow",
+                "postText" : "Whoever Parked in my spot (space 113), please move *said kindly*",
+                "postAuthor": "Max Kanat-Alexander"
+            },
+            {
+                "title": "Community Event",
+                "postText" : "We have an event at the clubhouse on 3/10",
+                "postAuthor": "Lucky Stiff"
+            },
+            {
+                "title": "Look Out!",
+                "postText" : "I saw some raccoons in the dumpster!",
+                "postAuthor": "Kent Beck"
+            }
+        ]
+    }
+]
