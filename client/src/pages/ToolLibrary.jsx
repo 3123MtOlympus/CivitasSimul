@@ -55,14 +55,14 @@ const ToolLibrary = () => {
   return (
     <div>
       <div className="justify-center">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2 className="bg-dark text-light">
           Tool Library 
         </h2>
-
-        <div className="col-12 col-md-10 mb-5">                
+<p> Here, we can join our community with sharing what we have. Need a hammer? Check here! Need some salt? Check here! You never know what your neighors may have to offer!</p>
+        <div className="toolcard">                
                 {tools && tools.map((tool) => (
-                        <div className="card" key={tool._id}>
-                            <img src={tool.imgUrl} className="card-img-top" alt={tool.name} />
+                        <div className="card list" key={tool._id}>
+                            <img src={tool.imgUrl} className="img-top" alt={tool.name} />
                             <div className="card-body">
                                 <h5 className="card-title">{tool.name}</h5>
                                 <p className="card-text">{tool.description}</p>
