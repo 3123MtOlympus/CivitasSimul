@@ -19,6 +19,22 @@ const typeDefs = `
     imgUrl: String
   }
 
+  type Board {
+    _id: ID
+    boardName: String
+    posts: [Post]
+  }
+  
+  type Post {
+    _id: ID
+    title: String
+    postText: String
+    postImg: String
+    postAuthor: String
+    datePosted: String
+    comments: [Comment]
+  }
+
   type Comment {
     _id: ID
     commentText: String
@@ -38,16 +54,19 @@ const typeDefs = `
     tool(toolId: ID!): Tool
     unitNumber: [User]
     me: User
+    posts: [Post]
+    post(postId: ID!): Post
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!, phoneNumber: String, unitNumber: String): Auth
     login(email: String!, password: String!): Auth
     updateUser(phoneNumber: String!, email: String!, password: String!): Auth
-    addTool(name: String, description: String, isAvailable: Boolean, owner: String, imgUrl: String): Tool
-    addComment(toolId: ID!, commentText: String!): Tool
+    addTool(toolText: String!): Tool
     removeTool(toolId: ID!): Tool
     removeComment(toolId: ID!, commentId: ID!): Tool
+    addPost(title: String!, postText: String!, postImg: String, postAuthor: String!): Post
+    addComment(postId: ID!, commentText: String!, commentAuthor: String!): Comment
     sendEmail(unitNumber: String!): Auth
   }
 `;

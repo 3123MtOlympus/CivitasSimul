@@ -54,3 +54,11 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const SEND_EMAIL = gql`
+mutation sendEmail($unitNumber: String!) {
+  sendEmail(unitNumber: $unitNumber) {
+    token
+  }
+}
+`;

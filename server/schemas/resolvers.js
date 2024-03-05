@@ -1,4 +1,4 @@
-const { User, Tool } = require('../models');
+const { User, Tool, Board, Post } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const Mailjet = require('node-mailjet');
 
@@ -25,6 +25,12 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    posts: async () => {
+      return Post.find();
+    },
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
+    },
   },
 
   Mutation: {
@@ -34,20 +40,26 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
+      // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
       const user = await User.findOne({ email });
 
+      // If there is no user with that email address, return an Authentication error stating so
       if (!user) {
-        throw AuthenticationError;
+        throw AuthenticationError
       }
 
+      // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
       const correctPw = await user.isCorrectPassword(password);
 
+      // If the password is incorrect, return an Authentication error stating so
       if (!correctPw) {
-        throw AuthenticationError;
+        throw AuthenticationError
       }
 
+      // If email and password are correct, sign user into the application with a JWT
       const token = signToken(user);
 
+      // Return an `Auth` object that consists of the signed token and user's information
       return { token, user };
     },
 
@@ -56,12 +68,15 @@ const resolvers = {
       return updatedUser;
     },
 
-    addTool: async (parent, { toolText }, context) => {
-      if (context.user) {
+    addTool: async (parent, { name, description, imgUrl }, context) => {
+      if(name && description && imgUrl) {
         const tool = await Tool.create({
-          toolText,
-          owner: context.user.username,
+          name: name,
+          description: description,
+          imgUrl: imgUrl
         });
+
+        if(context){
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -69,26 +84,10 @@ const resolvers = {
         );
 
         return tool;
+        }
       }
       throw AuthenticationError;
       ('You need to be logged in!');
-    },
-    addComment: async (parent, { toolId, commentText }, context) => {
-      if (context.user) {
-        return Tool.findOneAndUpdate(
-          { _id: toolId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw AuthenticationError;
     },
     removeTool: async (parent, { toolId }, context) => {
       if (context.user) {
@@ -123,6 +122,18 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+
+    addPost: async (parent, { title, postText, postImg, postAuthor}) => {
+      return Post.create({ title, postText, postImg, postAuthor });
+    },
+    addComment: async (parent, { postId, commentText }) => {
+      return Post.findOneAndUpdate ( 
+        {_id: postId },
+        { $addToSet : { comments: { commentText } }},
+        { runValidators: true, new: true}
+      )
+    },
+
     sendEmail: async (parent, { unitNumber }) => {
       const user = await User.findOne({ unitNumber });
 
@@ -136,8 +147,8 @@ const resolvers = {
       console.log(email);
 
       const mailjet = new Mailjet({
-        apiKey: process.env.MJ_APIKEY_PUBLIC, //|| '0d3d2d0b4a2235f868be0fbc7ff03a84',
-        apiSecret: process.env.MJ_APIKEY_PRIVATE //|| 'cb2611c841e8b331d6ae14d2a77f872c'
+        apiKey: process.env.MJ_APIKEY_PUBLIC, 
+        apiSecret: process.env.MJ_APIKEY_PRIVATE 
       });
 
       const request = mailjet
@@ -173,6 +184,20 @@ const resolvers = {
     },
   },
 
+//   notifyUser: async (parent, { unitNumber, email }) => {
+//     try {
+//         // Assuming User is your Mongoose model
+//         const user = await User.findOne({ unitNumber, email });
+        
+//         // Assuming User is found and notification is sent successfully
+//         console.log('Thanks for being NeighborLY!');
+//         return 'Notification sent successfully';
+//     } catch (error) {
+//         // If there's an error in finding the user or sending notification
+//         console.error(error);
+//         throw new AuthenticationError('Failed to notify user');
+//     }
+// }
 };
 
 module.exports = resolvers;
