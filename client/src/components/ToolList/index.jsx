@@ -18,15 +18,12 @@ const ToolList = ({
             </div>
             <h4 className="card-header bg-primary text-light p-2 m-0">
               
-                <Link
-                  className="text-light"
-                  to={`/tools/${tool._id}`}
-                >
+                <div className="text-light">
                   {tool.name} <br />
                   <span style={{ fontSize: '1rem' }}>
                     {tool.description}
                   </span>
-                </Link>
+                </div>
             </h4>
             <div className="btn btn-primary btn-block btn-squared">
               { 
