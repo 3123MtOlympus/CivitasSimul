@@ -11,12 +11,12 @@ const ToolForm = () => {
   const [toolText, setToolText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
-
+  const [success, setSuccess] = useState("");
   const [name, setToolName] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImageUrl] = useState('');
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(name);
     console.log(description);
     console.log(imgUrl);
@@ -24,12 +24,12 @@ const ToolForm = () => {
 
 
   const [addTool, { error }] = useMutation
-  (ADD_TOOL, {
-    refetchQueries: [
-      QUERY_ME,
-      'me'
-    ]
-  });
+    (ADD_TOOL, {
+      refetchQueries: [
+        QUERY_ME,
+        'me'
+      ]
+    });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -42,8 +42,12 @@ const ToolForm = () => {
           imgUrl,
         },
       });
+      if (data?.addTool) {
+        setSuccess("Your tool has been added!")
+      }
+      setDescription('');
 
-      setToolText('');
+      setToolName('');
     } catch (err) {
       console.error(err);
     }
@@ -59,15 +63,16 @@ const ToolForm = () => {
   };
 
   //const handleImageUpload = () => {
-    const myWidget = cloudinary.createUploadWidget({
-      cloudName: 'dwjrsllb0', 
-      uploadPreset: 'hike_img'}, (error, result) => { 
-        if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info); 
-          setImageUrl(result.info.secure_url);
-        }
-      }
-    )
+  const myWidget = cloudinary.createUploadWidget({
+    cloudName: 'dwjrsllb0',
+    uploadPreset: 'hike_img'
+  }, (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log('Done! Here is the image info: ', result.info);
+      setImageUrl(result.info.secure_url);
+    }
+  }
+  )
   //}
 
   return (
@@ -85,7 +90,7 @@ const ToolForm = () => {
                 value={name}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={(event)=>setToolName(event.target.value)}
+                onChange={(event) => setToolName(event.target.value)}
               />
 
               <input
@@ -94,24 +99,28 @@ const ToolForm = () => {
                 value={description}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={(event)=>setDescription(event.target.value)}
+                onChange={(event) => setDescription(event.target.value)}
               />
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Tool
+              <button className="btn btn-primary" type="submit">
+                Add
               </button>
             </div>
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
               </div>
+            )} {success && (
+              <div className="col-12 my-3 bg-success text-white p-3">
+                {success}
+              </div>
             )}
           </form>
-          <button id="upload_widget" className="cloudinary-button" onClick={()=>myWidget.open()}>Upload Image</button>
+          <button id="upload_widget" className="cloudinary-button" onClick={() => myWidget.open()}>Upload Image</button>
         </>
-      ):(<></>)}
+      ) : (<></>)}
     </div>
   );
 };
