@@ -59,7 +59,7 @@ const ToolLibrary = () => {
           Tool Library 
         </h2>
 <p> Here, we can join our community with sharing what we have. Need a hammer? Check here! Need some salt? Check here! You never know what your neighors may have to offer!</p>
-        <div className="toolcard">                
+        <div className="toolcard row-4">                
                 {tools && tools.map((tool) => (
                         <div className="card list" key={tool._id}>
                             <img src={tool.imgUrl} className="img-top" alt={tool.name} />
