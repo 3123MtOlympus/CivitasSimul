@@ -7,7 +7,8 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-   
+    window.location.replace('/login');
+    
   };
   return (
     <header className=" text-light mb-4 px-3 d-flex justify-content-between align-center">
@@ -41,10 +42,9 @@ const Header = () => {
               <Link className="btn btn-lg btn-info m-2" to="/">
                 {Auth.getProfile().data.username}'s profile
               </Link>
-              <Link className="btn btn-lg btn-light m-2" 
-               to="/login">
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
-              </Link>
+              </button>
             </div>
           ) : (
             <>
