@@ -1303,3 +1303,7 @@ background-size: contain;
  height: 85%;
   margin-top: 0;
 }
+
+.btn.btn-block .submitBtn{
+  margin-left: 50px;
+}
