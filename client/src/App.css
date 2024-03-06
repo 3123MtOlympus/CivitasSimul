@@ -1277,6 +1277,14 @@ background-size: contain;
   background-color: #31e1be7c;
 }
 
+.post {
+  background-color: #7e521aba;
+}
+
+.post-divide {
+  height:10px;
+}
+
 .toolcard{
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Adjust number of columns as needed */

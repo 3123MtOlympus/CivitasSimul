@@ -25,11 +25,11 @@ const PostList = () => {
              {/* <div className="card p-2">
               <p>Post:</p>
             </div> */}
-            <h4 className=" bg-primary text-light p-2 m-0">
+            <h4 className="post text-light p-2 m-0">
               
                 <Link
                   className="text-light"
-                  to={`/post/${post._id}`}
+                  
                 >
                   {post.title} <br />
                   <span style={{ fontSize: '1rem' }}>
@@ -37,7 +37,7 @@ const PostList = () => {
                   </span>
                 </Link>
             </h4>
-            <div className="btn btn-primary btn-block btn-squared">
+            <div className="post-divide">
               { 
                 
               }
