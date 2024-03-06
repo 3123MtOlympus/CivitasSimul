@@ -11,7 +11,9 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
   //const { username: userParam } = useParams();
-
+if (!Auth.loggedIn()) {
+  window.location.assign("/login")
+}
   const { loading, data } = useQuery(QUERY_ME);
 
   const user = data?.me || {};
