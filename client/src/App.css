@@ -603,7 +603,7 @@ margin-left: 450px;;
   text-align: center;
   display: block;
   margin:10px auto;
-  margin-left: 150px;
+  margin-left: 10px;
 }
 
 .card .card-header {
@@ -1323,3 +1323,4 @@ background-size: contain;
 .btn .btn-primary .btn-block .addtool{
   width: 70%;
 }
+

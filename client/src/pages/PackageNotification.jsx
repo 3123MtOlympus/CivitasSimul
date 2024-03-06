@@ -57,7 +57,7 @@ const PackageNotification = () => {
   return (
     <div>
       <div className="justify-center">
-
+    
 <div className="othercard">
 <h3 className="h3title">Help keep our Mail room clean. 
   <br></br>Notify our neighbors of their packages</h3>
@@ -66,18 +66,18 @@ const PackageNotification = () => {
             Please select the neighbor you want to notify. <br></br>(Select as many as you'd like)
           </p>
             <form onSubmit={handleFormSubmit} >
-                
+            {success && (
+              <div className="col-12 my-3 bg-success text-white p-3">
+                {success}
+              </div>
+            )}
                 {users && users.map((user) => (
                     <div key={user.unitNumber}>
                         <input type="checkbox" id="" name={user.unitNumber} value={user.unitNumber} onChange={handleChange} />
                         <label> {user.unitNumber} </label> <br/>  
                     </div>
                 ))}
-                {success && (
-              <div className="col-12 my-3 bg-success text-white p-3">
-                {success}
-              </div>
-            )}
+               
                 <button
                 className="btn btn-block btn-primary submitBtn"
                 style={{ cursor: 'pointer' }}
@@ -85,7 +85,9 @@ const PackageNotification = () => {
                 >
                 Submit
                 </button>
+               
               </form>
+              
         </div>
        
       </div>
