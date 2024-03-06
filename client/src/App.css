@@ -1253,6 +1253,14 @@ background-size: contain;
   background-color: #31e1be7c;
 }
 
+.post {
+  background-color: #7e521aba;
+}
+
+.post-divide {
+  height:10px;
+}
+
 .toolcard{
   display: flex;
   margin: 0 auto;
