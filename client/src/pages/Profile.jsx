@@ -38,6 +38,9 @@ const Profile = () => {
               <h4>
                 Phone Number: <span style={{ fontSize: '1rem' }}>{user.phoneNumber}</span>
               </h4>
+              <button type="button" className="btn btn-primary add-tool" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add a Tool
+              </button>
             </div>
           </div>
 
@@ -51,9 +54,7 @@ const Profile = () => {
       </div>
 
       
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add a Tool
-      </button>
+      
 
       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
