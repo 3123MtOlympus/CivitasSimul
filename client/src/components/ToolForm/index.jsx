@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_TOOL } from '../../utils/mutations';
-import { QUERY_TOOL, QUERY_ME } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
@@ -12,11 +12,20 @@ const ToolForm = () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
+  const [name, setToolName] = useState('');
+  const [description, setDescription] = useState('');
+  const [imgUrl, setImageUrl] = useState('');
+
+  useEffect(()=>{
+    console.log(name);
+    console.log(description);
+    console.log(imgUrl);
+  })
+
+
   const [addTool, { error }] = useMutation
   (ADD_TOOL, {
     refetchQueries: [
-      QUERY_TOOLS,
-      'getTools',
       QUERY_ME,
       'me'
     ]
@@ -28,8 +37,9 @@ const ToolForm = () => {
     try {
       const { data } = await addTool({
         variables: {
-          toolText,
-          owner: Auth.getProfile().data.username,
+          name,
+          description,
+          imgUrl,
         },
       });
 
@@ -48,37 +58,49 @@ const ToolForm = () => {
     }
   };
 
+  //const handleImageUpload = () => {
+    const myWidget = cloudinary.createUploadWidget({
+      cloudName: 'dwjrsllb0', 
+      uploadPreset: 'hike_img'}, (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log('Done! Here is the image info: ', result.info); 
+          setImageUrl(result.info.secure_url);
+        }
+      }
+    )
+  //}
+
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
-
       {Auth.loggedIn() ? (
         <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
-              <textarea
+              <input
                 name="toolText"
-                placeholder="Here's a new thought..."
-                value={toolText}
+                placeholder="Name of tool..."
+                value={name}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleChange}
-              ></textarea>
+                onChange={(event)=>setToolName(event.target.value)}
+              />
+
+              <input
+                name="description"
+                placeholder="Tool description..."
+                value={description}
+                className="form-input w-100"
+                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                onChange={(event)=>setDescription(event.target.value)}
+              />
             </div>
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Tools
+                Add Tool
               </button>
             </div>
             {error && (
@@ -87,13 +109,9 @@ const ToolForm = () => {
               </div>
             )}
           </form>
+          <button id="upload_widget" className="cloudinary-button" onClick={()=>myWidget.open()}>Upload Image</button>
         </>
-      ) : (
-        <p>
-          You need to be logged in to share your thoughts. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
+      ):(<></>)}
     </div>
   );
 };
