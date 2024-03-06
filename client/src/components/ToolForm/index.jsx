@@ -99,8 +99,8 @@ const ToolForm = () => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Tool
+              <button className="btn btn-primary" type="submit">
+                Add
               </button>
             </div>
             {error && (
