@@ -63,7 +63,7 @@ const PackageNotification = () => {
                 {users && users.map((user) => (
                     <div key={user.unitNumber}>
                         <input type="checkbox" id="" name={user.unitNumber} value={user.unitNumber} onChange={handleChange} />
-                        <label for={user.unitNumber}> {user.unitNumber} </label> <br/>  
+                        <label> {user.unitNumber} </label> <br/>  
                     </div>
                 ))}
                 

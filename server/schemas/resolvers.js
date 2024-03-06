@@ -141,9 +141,12 @@ const resolvers = {
       }
 
       const email = user.email;
+      const name = user.username;
+      const quotedEmail = ""+email+"";
       console.log("Should be emailing unit# and email:");
       console.log(unitNumber);
-      console.log(email);
+      console.log(quotedEmail);
+      console.log(name);
 
       const mailjet = new Mailjet({
         apiKey: process.env.MJ_APIKEY_PUBLIC, 
@@ -161,12 +164,12 @@ const resolvers = {
               },
               "To": [
                 {
-                  "Email": "ariadnasv5@hotmail.com",
-                  "Name": "Sofia"
+                  "Email": quotedEmail,
+                  "Name": name
                 }
               ],
               "Subject": "Greetings",
-              "TextPart": "My first Mailjet email",
+              "TextPart": "My Mailjet email",
               "HTMLPart": "<h3>Dear Neighbor, You have a package. </h3><br />May the delivery force be with you!",
             }
           ]
@@ -182,21 +185,6 @@ const resolvers = {
 
     },
   },
-
-//   notifyUser: async (parent, { unitNumber, email }) => {
-//     try {
-//         // Assuming User is your Mongoose model
-//         const user = await User.findOne({ unitNumber, email });
-        
-//         // Assuming User is found and notification is sent successfully
-//         console.log('Thanks for being NeighborLY!');
-//         return 'Notification sent successfully';
-//     } catch (error) {
-//         // If there's an error in finding the user or sending notification
-//         console.error(error);
-//         throw new AuthenticationError('Failed to notify user');
-//     }
-// }
 };
 
 module.exports = resolvers;
