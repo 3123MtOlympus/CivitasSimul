@@ -9,6 +9,7 @@ const PackageNotification = () => {
     const [formState, setFormState] = useState([]);
     const { loading, data } = useQuery(QUERY_USER);
     
+    const [success, setSuccess] = useState("");
 
   const [sendEmail, { error, unitNumber }] = useMutation(SEND_EMAIL);
   const users = data?.users  || [];
@@ -44,7 +45,10 @@ const PackageNotification = () => {
         const { result } = await sendEmail({
                 variables: { unitNumber: unitNumber },
               });
-       })      
+              });
+                if (result?.sendEmail) {
+        setSuccess("Your neighbor has been notified!")
+      }     
     } catch (e) {
       console.error(e);
     }
@@ -69,7 +73,11 @@ const PackageNotification = () => {
                         <label> {user.unitNumber} </label> <br/>  
                     </div>
                 ))}
-                
+                {success && (
+              <div className="col-12 my-3 bg-success text-white p-3">
+                {success}
+              </div>
+            )}
                 <button
                 className="btn btn-block btn-primary submitBtn"
                 style={{ cursor: 'pointer' }}
