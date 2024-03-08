@@ -13,7 +13,6 @@ In the world of apartment living, where individuals often lead busy lives, Neigh
 - [Deployed Link](#deployed-link)
 
 ## Specs:
--  
 - Cloudinary for uploading images
 - Created login credentials for user
 - Interactive display
