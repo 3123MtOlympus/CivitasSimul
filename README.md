@@ -49,4 +49,4 @@ In the world of apartment living, where individuals often lead busy lives, Neigh
 
 ## Deployed Link
 
-### [Community Starts Here - NeighborLY]()
+### [Community Starts Here - NeighborLY](https://neighborly-dzxi.onrender.com/login)
